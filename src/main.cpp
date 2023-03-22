@@ -8,14 +8,13 @@
 #include <sys/stat.h>
 #include <complex>
 
+#include "const.hpp"
 #include "parse_commandline_args.hpp"
 #include "options.hpp"
 #include "create_new_directory.hpp"
 #include "zero_padding.hpp"
 #include "image_config.hpp"
 #include "mandelbrot.hpp"
-
-#define OUTPUT_PRECISION 100
 
 int main(int argc, char *argv[])
 {

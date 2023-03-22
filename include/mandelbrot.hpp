@@ -2,10 +2,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "const.hpp"
 #include "image_config.hpp"
-
-#define MAX_ITERATIONS 100
-#define MAX_COLOR_VALUE 255
 
 int mandelbrot(ImageConfig image_config)
 {

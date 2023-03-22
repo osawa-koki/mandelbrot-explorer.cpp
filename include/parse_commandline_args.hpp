@@ -9,8 +9,7 @@
 #include <gmpxx.h>
 
 #include "options.hpp"
-
-#define CALC_PRECISION 128
+#include "const.hpp"
 
 Options parse_commandline_args(int argc, char *argv[])
 {
