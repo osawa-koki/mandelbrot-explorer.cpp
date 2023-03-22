@@ -36,10 +36,10 @@ int mandelbrot(ImageConfig image_config)
       px[3] = MAX_COLOR_VALUE; // 不透明度
 
       // マンデルブロ集合の計算を行う
-      mpf_class x0 = x_min + (x_max - x_min) * x / width;
-      mpf_class y0 = y_min + (y_max - y_min) * y / height;
-      mpf_class x1 = 0.0;
-      mpf_class y1 = 0.0;
+      mpf_class x0 = x_min + (x_max - x_min) * mpf_class(x, CALC_PRECISION) / mpf_class(width, CALC_PRECISION);
+      mpf_class y0 = y_min + (y_max - y_min) * mpf_class(y, CALC_PRECISION) / mpf_class(height, CALC_PRECISION);
+      mpf_class x1 = mpf_class(0.0, CALC_PRECISION);
+      mpf_class y1 = mpf_class(0.0, CALC_PRECISION);
       int i = 0;
       while (x1 * x1 + y1 * y1 <= 2 * 2 && i < MAX_ITERATIONS)
       {
