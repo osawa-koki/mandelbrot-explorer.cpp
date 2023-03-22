@@ -8,7 +8,7 @@ struct Options {
   std::string name;
   int from;
   int upto;
-  int aspect_ratio;
+  float aspect_ratio;
   mpf_class shrink_ratio;
   float filesize_height;
   mpf_class start_x;
