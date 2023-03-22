@@ -1,7 +1,12 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <algorithm>
 #include <map>
+#include <gmpxx.h>
+
+#define CALC_PRECISION 128
+#define OUTPUT_PRECISION 100
 
 int main(int argc, char *argv[])
 {
@@ -38,11 +43,11 @@ int main(int argc, char *argv[])
   float filesize_height = std::stof(options["filesize-height"]);
   std::cout << "FILESIZE_HEIGHT: " << filesize_height << std::endl;
 
-  float start_x = std::stof(options["start-x"]);
-  std::cout << "START_X: " << start_x << std::endl;
+  mpf_class start_x(options["start-x"], CALC_PRECISION);
+  std::cout << "START_X: " << std::setprecision(OUTPUT_PRECISION) << start_x << std::endl;
 
-  float start_y = std::stof(options["start-y"]);
-  std::cout << "START_Y: " << start_y << std::endl;
+  mpf_class start_y(options["start-y"], CALC_PRECISION);
+  std::cout << "START_Y: " << std::setprecision(OUTPUT_PRECISION) << start_y << std::endl;
 
   float default_width = std::stof(options["default-width"]);
   std::cout << "DEFAULT_WIDTH: " << default_width << std::endl;
