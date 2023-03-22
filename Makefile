@@ -14,10 +14,10 @@ OBJS=$(patsubst $(SRC_DIR)/%.cpp,$(BIN_DIR)/%.o,$(SRCS))
 all: $(PROGRAM)
 
 $(PROGRAM): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ -lgmpxx -lgmp -lpng
+	$(CXX) $(CXXFLAGS) -I./include -o $@ $^ -lgmpxx -lgmp -lpng
 
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) -I./include -o $@ -c $<
 
 clean:
 	rm -f $(BIN_DIR)/*
