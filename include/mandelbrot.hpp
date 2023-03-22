@@ -30,9 +30,9 @@ int mandelbrot(ImageConfig image_config)
     for (int x = 0; x < width; x++)
     {
       png_bytep px = &(row[x * 4]);
-      px[0] = 0; // 赤
-      px[1] = 0; // 緑
-      px[2] = 0; // 青
+      px[0] = 0;               // 赤
+      px[1] = 0;               // 緑
+      px[2] = 0;               // 青
       px[3] = MAX_COLOR_VALUE; // 不透明度
 
       // マンデルブロ集合の計算を行う

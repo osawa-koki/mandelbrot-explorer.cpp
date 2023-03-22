@@ -5,7 +5,8 @@
 #include <gmpxx.h>
 #include <complex>
 
-struct ImageConfig {
+struct ImageConfig
+{
   std::string filename;
   int width;
   int height;

@@ -4,7 +4,8 @@
 #include <string>
 #include <gmpxx.h>
 
-struct Options {
+struct Options
+{
   std::string name;
   int from;
   int upto;
