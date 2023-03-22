@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <map>
+#include <gmp.h>
 #include <gmpxx.h>
 #include <sys/stat.h>
 
@@ -37,6 +38,21 @@ int main(int argc, char *argv[])
   for (int i = opt.from; i <= opt.upto; i++) {
     std::string filename = target_directory + zero_padding(i, 8) + ".png";
     std::cout << "FILENAME: " << filename << std::endl;
+
+    // let c_size_x = Float::with_val(RUG_PREC, height.clone()) * Float::with_val(RUG_PREC, aspect_ratio);
+    // let c_size_y = Float::with_val(RUG_PREC, height.clone());
+    // let new_start_x:Float = start_x.clone() + ((default_width - c_size_x.clone()) / 2.0);
+    // let new_start_y:Float = start_y.clone() - ((default_height - c_size_y.clone()) / 2.0);
+    // let upper_left = Complex::with_val(RUG_PREC, (new_start_x.clone(), new_start_y.clone()));
+    // let lower_right = Complex::with_val(RUG_PREC, (new_start_x.clone() + c_size_x.clone(), new_start_y.clone() - c_size_y.clone()));
+    
+    mpf_class shrink = mpf_class(opt.shrink_ratio, CALC_PRECISION);
+    for (int j = 0; j < i; j++) {
+      shrink *= opt.shrink_ratio;
+    }
+    mpf_class height = opt.default_height * shrink;
+    std::cout << "shrink -> " << shrink << std::endl;
+    std::cout << "height -> " << height << std::endl;
   }
 
   return 0;
