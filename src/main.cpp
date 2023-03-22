@@ -8,7 +8,21 @@
 #define CALC_PRECISION 128
 #define OUTPUT_PRECISION 100
 
-int main(int argc, char *argv[])
+struct Options {
+  std::string name;
+  int from;
+  int upto;
+  float aspect_ratio;
+  float shrink_ratio;
+  float filesize_height;
+  mpf_class start_x;
+  mpf_class start_y;
+  float default_width;
+  float default_height;
+  int length;
+};
+
+Options parse_command_line(int argc, char *argv[])
 {
   std::map<std::string, std::string> options;
   for (int i = 1; i < argc; i += 2)
@@ -25,38 +39,37 @@ int main(int argc, char *argv[])
     }
   }
 
-  std::string name = options["name"];
-  std::cout << "NAME: " << name << std::endl;
+  Options opt;
+  opt.name = options["name"];
+  opt.from = std::stoi(options["from"]);
+  opt.upto = std::stoi(options["upto"]);
+  opt.aspect_ratio = std::stof(options["aspect-ratio"]);
+  opt.shrink_ratio = std::stof(options["shrink-ratio"]);
+  opt.filesize_height = std::stof(options["filesize-height"]);
+  opt.start_x = mpf_class(options["start-x"], CALC_PRECISION);
+  opt.start_y = mpf_class(options["start-y"], CALC_PRECISION);
+  opt.default_width = std::stof(options["default-width"]);
+  opt.default_height = std::stof(options["default-height"]);
+  opt.length = std::stoi(options["length"]);
 
-  int from = std::stoi(options["from"]);
-  std::cout << "FROM: " << from << std::endl;
+  return opt;
+}
 
-  int upto = std::stoi(options["upto"]);
-  std::cout << "UPTO: " << upto << std::endl;
+int main(int argc, char *argv[])
+{
+  Options opt = parse_command_line(argc, argv);
 
-  float aspect_ratio = std::stof(options["aspect-ratio"]);
-  std::cout << "ASPECT_RATIO: " << aspect_ratio << std::endl;
-
-  float shrink_ratio = std::stof(options["shrink-ratio"]);
-  std::cout << "SHRINK_RATIO: " << shrink_ratio << std::endl;
-
-  float filesize_height = std::stof(options["filesize-height"]);
-  std::cout << "FILESIZE_HEIGHT: " << filesize_height << std::endl;
-
-  mpf_class start_x(options["start-x"], CALC_PRECISION);
-  std::cout << "START_X: " << std::setprecision(OUTPUT_PRECISION) << start_x << std::endl;
-
-  mpf_class start_y(options["start-y"], CALC_PRECISION);
-  std::cout << "START_Y: " << std::setprecision(OUTPUT_PRECISION) << start_y << std::endl;
-
-  float default_width = std::stof(options["default-width"]);
-  std::cout << "DEFAULT_WIDTH: " << default_width << std::endl;
-
-  float default_height = std::stof(options["default-height"]);
-  std::cout << "DEFAULT_HEIGHT: " << default_height << std::endl;
-
-  int length = std::stoi(options["length"]);
-  std::cout << "LENGTH: " << length << std::endl;
+  std::cout << "NAME: " << opt.name << std::endl;
+  std::cout << "FROM: " << opt.from << std::endl;
+  std::cout << "UPTO: " << opt.upto << std::endl;
+  std::cout << "ASPECT_RATIO: " << opt.aspect_ratio << std::endl;
+  std::cout << "SHRINK_RATIO: " << opt.shrink_ratio << std::endl;
+  std::cout << "FILESIZE_HEIGHT: " << opt.filesize_height << std::endl;
+  std::cout << "START_X: " << std::setprecision(OUTPUT_PRECISION) << opt.start_x << std::endl;
+  std::cout << "START_Y: " << std::setprecision(OUTPUT_PRECISION) << opt.start_y << std::endl;
+  std::cout << "DEFAULT_WIDTH: " << opt.default_width << std::endl;
+  std::cout << "DEFAULT_HEIGHT: " << opt.default_height << std::endl;
+  std::cout << "LENGTH: " << opt.length << std::endl;
 
   return 0;
 }
