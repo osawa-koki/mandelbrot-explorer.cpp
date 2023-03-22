@@ -4,9 +4,11 @@
 #include <algorithm>
 #include <map>
 #include <gmpxx.h>
+#include <sys/stat.h>
 
 #include "parse_commandline_args.hpp"
 #include "options.hpp"
+#include "create_new_directory.hpp"
 
 #define OUTPUT_PRECISION 100
 
@@ -25,6 +27,10 @@ int main(int argc, char *argv[])
   std::cout << "DEFAULT_WIDTH: " << opt.default_width << std::endl;
   std::cout << "DEFAULT_HEIGHT: " << opt.default_height << std::endl;
   std::cout << "LENGTH: " << opt.length << std::endl;
+
+  // 対象のディレクトリを作成
+  std::string target_directory = "./work/" + opt.name + "/";
+  create_new_directory(target_directory);
 
   return 0;
 }
