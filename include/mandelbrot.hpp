@@ -2,21 +2,21 @@
 #include <iostream>
 #include <fstream>
 
-#define WIDTH 500
-#define HEIGHT 500
-#define X_MIN -2.5
-#define X_MAX 1.0
-#define Y_MIN -1.5
-#define Y_MAX 1.5
-#define MAX_ITERATIONS 1000
-#define MAX_COLOR_VALUE 255
-#define OUTPUT_FILE "output.png"
+#include "image_config.hpp"
 
-int mandelbrot()
+#define MAX_ITERATIONS 100
+#define MAX_COLOR_VALUE 255
+
+int mandelbrot(ImageConfig image_config)
 {
   // 画像の幅と高さを指定する
-  int width = WIDTH;
-  int height = HEIGHT;
+  int width = image_config.width;
+  int height = image_config.height;
+
+  mpf_class x_min = image_config.upper_left.real();
+  mpf_class x_max = image_config.lower_right.real();
+  mpf_class y_min = image_config.upper_left.imag();
+  mpf_class y_max = image_config.lower_right.imag();
 
   // 画像のデータを格納する配列を確保する
   png_bytep *row_pointers = (png_bytep *)malloc(sizeof(png_bytep) * height);
@@ -34,15 +34,15 @@ int mandelbrot()
       png_bytep px = &(row[x * 4]);
 
       // マンデルブロ集合の計算を行う
-      double x0 = X_MIN + (X_MAX - X_MIN) * x / width;
-      double y0 = Y_MIN + (Y_MAX - Y_MIN) * y / height;
-      double x1 = 0.0;
-      double y1 = 0.0;
+      mpf_class x0 = x_min + (x_max - x_min) * x / width;
+      mpf_class y0 = y_min + (y_max - y_min) * y / height;
+      mpf_class x1 = 0.0;
+      mpf_class y1 = 0.0;
       int i = 0;
       while (x1 * x1 + y1 * y1 <= 2 * 2 && i < MAX_ITERATIONS)
       {
-        double x2 = x1 * x1 - y1 * y1 + x0;
-        double y2 = 2 * x1 * y1 + y0;
+        mpf_class x2 = x1 * x1 - y1 * y1 + x0;
+        mpf_class y2 = 2 * x1 * y1 + y0;
         x1 = x2;
         y1 = y2;
         i++;
@@ -58,7 +58,7 @@ int mandelbrot()
   }
 
   // 画像をファイルに出力する
-  std::ofstream output_file(OUTPUT_FILE, std::ios::binary);
+  std::ofstream output_file(image_config.filename, std::ios::binary);
   png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
   png_infop info = png_create_info_struct(png);
   png_set_write_fn(

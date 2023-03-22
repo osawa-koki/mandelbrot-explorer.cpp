@@ -13,6 +13,7 @@
 #include "create_new_directory.hpp"
 #include "zero_padding.hpp"
 #include "image_config.hpp"
+#include "mandelbrot.hpp"
 
 #define OUTPUT_PRECISION 100
 
@@ -71,6 +72,7 @@ int main(int argc, char *argv[])
       upper_left,
       lower_right
     };
+    mandelbrot(image_config);
   }
 
   return 0;
