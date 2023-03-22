@@ -26,14 +26,14 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y dos2unix
-          dos2unix ./run.sh
-          chmod +x ./run.sh
+          sudo dos2unix ./run.sh
+          sudo chmod +x ./run.sh
           sudo apt update && apt install -y build-essential libpng-dev libgmp-dev
           sudo apt install -y ffmpeg m4 m4-doc
       - name: Adjust EOL
-        run: dos2unix ./run.sh
+        run: sudo dos2unix ./run.sh
       - name: Run Script
-        run: ./run.sh
+        run: sudo ./run.sh
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
