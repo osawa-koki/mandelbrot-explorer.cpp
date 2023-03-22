@@ -8,13 +8,13 @@ struct Options {
   std::string name;
   int from;
   int upto;
-  float aspect_ratio;
-  float shrink_ratio;
+  mpf_class aspect_ratio;
+  mpf_class shrink_ratio;
   float filesize_height;
   mpf_class start_x;
   mpf_class start_y;
-  float default_width;
-  float default_height;
+  mpf_class default_width;
+  mpf_class default_height;
   int length;
 };
 
