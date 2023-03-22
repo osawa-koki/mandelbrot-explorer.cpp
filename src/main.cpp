@@ -69,7 +69,8 @@ int main(int argc, char *argv[])
       opt.filesize_height * opt.aspect_ratio,
       opt.filesize_height,
       upper_left,
-      lower_right
+      lower_right,
+      mpf_class(1, CALC_PRECISION) + mpf_class(i, CALC_PRECISION) / mpf_class(opt.upto - opt.from, CALC_PRECISION)
     };
     mandelbrot(image_config);
   }

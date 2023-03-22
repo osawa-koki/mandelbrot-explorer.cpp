@@ -30,6 +30,10 @@ int mandelbrot(ImageConfig image_config)
     for (int x = 0; x < width; x++)
     {
       png_bytep px = &(row[x * 4]);
+      px[0] = 0; // 赤
+      px[1] = 0; // 緑
+      px[2] = 0; // 青
+      px[3] = MAX_COLOR_VALUE; // 不透明度
 
       // マンデルブロ集合の計算を行う
       mpf_class x0 = x_min + (x_max - x_min) * x / width;
@@ -48,9 +52,11 @@ int mandelbrot(ImageConfig image_config)
 
       // マンデルブロ集合の計算結果を色に変換する
       int color = i * MAX_COLOR_VALUE / MAX_ITERATIONS;
-      px[0] = MAX_COLOR_VALUE;
-      px[1] = color;
-      px[2] = color;
+      color /= 1.5;
+      if (color > MAX_COLOR_VALUE) color = MAX_COLOR_VALUE;
+      px[0] = color;
+      px[1] = 0;
+      px[2] = 0;
       px[3] = MAX_COLOR_VALUE;
     }
   }
