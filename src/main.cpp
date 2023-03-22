@@ -12,6 +12,7 @@
 #include "options.hpp"
 #include "create_new_directory.hpp"
 #include "zero_padding.hpp"
+#include "image_config.hpp"
 
 #define OUTPUT_PRECISION 100
 
@@ -62,6 +63,14 @@ int main(int argc, char *argv[])
     std::complex<mpf_class> lower_right = std::complex<mpf_class>(new_start_x + c_size_x, new_start_y - c_size_y);
     std::cout << "upper_left -> " << upper_left << std::endl;
     std::cout << "lower_right -> " << lower_right << std::endl;
+
+    ImageConfig image_config = {
+      filename,
+      height * opt.aspect_ratio,
+      height,
+      upper_left,
+      lower_right
+    };
   }
 
   return 0;
