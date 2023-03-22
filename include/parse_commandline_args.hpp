@@ -1,3 +1,6 @@
+#ifndef parse_commandline_args_hpp
+#define parse_commandline_args_hpp
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -9,7 +12,7 @@
 
 #define CALC_PRECISION 128
 
-Options parse_command_line(int argc, char *argv[])
+Options parse_commandline_args(int argc, char *argv[])
 {
   std::map<std::string, std::string> options;
   for (int i = 1; i < argc; i += 2)
@@ -41,3 +44,5 @@ Options parse_command_line(int argc, char *argv[])
 
   return opt;
 }
+
+#endif

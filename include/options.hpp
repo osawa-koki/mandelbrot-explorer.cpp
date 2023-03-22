@@ -1,3 +1,6 @@
+#ifndef options_hpp
+#define options_hpp
+
 #include <string>
 #include <gmpxx.h>
 
@@ -14,3 +17,5 @@ struct Options {
   float default_height;
   int length;
 };
+
+#endif

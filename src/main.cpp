@@ -5,13 +5,14 @@
 #include <map>
 #include <gmpxx.h>
 
-#include "parse_command_line.hpp"
+#include "parse_commandline_args.hpp"
+#include "options.hpp"
 
 #define OUTPUT_PRECISION 100
 
 int main(int argc, char *argv[])
 {
-  Options opt = parse_command_line(argc, argv);
+  Options opt = parse_commandline_args(argc, argv);
 
   std::cout << "NAME: " << opt.name << std::endl;
   std::cout << "FROM: " << opt.from << std::endl;
