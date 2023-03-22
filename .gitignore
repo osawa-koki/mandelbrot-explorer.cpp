@@ -557,4 +557,4 @@ FodyWeavers.xsd
 work/*
 tmp/*
 !.gitkeep
-worl/**/*.png
+work/**/*.png
