@@ -7,8 +7,8 @@
 
 struct ImageConfig {
   std::string filename;
-  mpf_class width;
-  mpf_class height;
+  int width;
+  int height;
   std::complex<mpf_class> upper_left;
   std::complex<mpf_class> lower_right;
 };

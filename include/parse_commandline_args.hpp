@@ -33,7 +33,7 @@ Options parse_commandline_args(int argc, char *argv[])
   opt.name = options["name"];
   opt.from = std::stoi(options["from"]);
   opt.upto = std::stoi(options["upto"]);
-  opt.aspect_ratio = mpf_class(options["aspect-ratio"], CALC_PRECISION);
+  opt.aspect_ratio = std::stof(options["aspect-ratio"]);
   opt.shrink_ratio = mpf_class(options["shrink-ratio"], CALC_PRECISION);
   opt.filesize_height = std::stof(options["filesize-height"]);
   opt.start_x = mpf_class(options["start-x"], CALC_PRECISION);

@@ -66,8 +66,8 @@ int main(int argc, char *argv[])
 
     ImageConfig image_config = {
       filename,
-      height * opt.aspect_ratio,
-      height,
+      opt.filesize_height * opt.aspect_ratio,
+      opt.filesize_height,
       upper_left,
       lower_right
     };
