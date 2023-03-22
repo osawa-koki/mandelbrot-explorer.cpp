@@ -24,12 +24,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Install packages
         run: |
-          apt update
-          apt install -y dos2unix
+          sudo apt update
+          sudo apt install -y dos2unix
           dos2unix ./run.sh
           chmod +x ./run.sh
-          apt update && apt install -y build-essential libpng-dev libgmp-dev
-          apt install -y ffmpeg m4 m4-doc
+          sudo apt update && apt install -y build-essential libpng-dev libgmp-dev
+          sudo apt install -y ffmpeg m4 m4-doc
       - name: Adjust EOL
         run: dos2unix ./run.sh
       - name: Run Script
