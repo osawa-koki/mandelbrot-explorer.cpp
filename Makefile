@@ -26,4 +26,4 @@ clean:
 	touch $(BIN_DIR)/.gitkeep
 
 run: $(PROGRAM)
-	$(PROGRAM)
+	$(PROGRAM) $(ARGS)
