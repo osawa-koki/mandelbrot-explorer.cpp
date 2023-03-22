@@ -3,13 +3,14 @@
 
 #include <string>
 #include <gmpxx.h>
+#include <complex>
 
 struct ImageConfig {
   std::string filename;
   int width;
   int height;
-  mpf_class upper_left;
-  mpf_class lower_right;
+  std::complex<mpf_class> upper_left;
+  std::complex<mpf_class> lower_right;
 };
 
 #endif
