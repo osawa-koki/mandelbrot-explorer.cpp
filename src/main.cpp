@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
   std::cout << "START_Y: " << std::setprecision(OUTPUT_PRECISION) << opt.start_y << std::endl;
   std::cout << "DEFAULT_WIDTH: " << opt.default_width << std::endl;
   std::cout << "DEFAULT_HEIGHT: " << opt.default_height << std::endl;
-  std::cout << "LENGTH: " << opt.length << std::endl;
 
   // 対象のディレクトリを作成
   std::string target_directory = "./work/" + opt.name + "/";

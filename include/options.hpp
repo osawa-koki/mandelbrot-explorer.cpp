@@ -15,7 +15,6 @@ struct Options {
   mpf_class start_y;
   mpf_class default_width;
   mpf_class default_height;
-  int length;
 };
 
 #endif
