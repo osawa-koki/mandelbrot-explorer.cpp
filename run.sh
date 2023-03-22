@@ -22,3 +22,4 @@ rm -rf ./work/$NAME
 make run ARGS="-name $NAME -from $FROM -upto $UPTO -aspect-ratio $ASPECT_RATIO -shrink-ratio $SHRINK_RATIO -filesize-height $FILESIZE_HEIGHT -start-x $START_X -start-y $START_Y -default-width $DEFAULT_WIDTH -default-height $DEFAULT_HEIGHT -length $LENGTH"
 
 ffmpeg -r 30 -i ./work/$NAME/%08d.png -vcodec libx264 -pix_fmt yuv420p -r 60 ./tmp/$NAME.mp4
+cp ./tmp/$NAME.mp4 ./dist/video.mp4
