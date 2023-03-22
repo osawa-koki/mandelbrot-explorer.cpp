@@ -558,3 +558,4 @@ work/*
 tmp/*
 !.gitkeep
 work/**/*.png
+*.mp4
