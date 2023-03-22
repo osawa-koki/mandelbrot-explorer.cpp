@@ -52,8 +52,6 @@ int mandelbrot(ImageConfig image_config)
 
       // マンデルブロ集合の計算結果を色に変換する
       int color = i * MAX_COLOR_VALUE / MAX_ITERATIONS;
-      color /= 1.5;
-      if (color > MAX_COLOR_VALUE) color = MAX_COLOR_VALUE;
       px[0] = color;
       px[1] = 0;
       px[2] = 0;
