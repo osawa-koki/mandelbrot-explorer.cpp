@@ -24,14 +24,12 @@ int mandelbrot(ImageConfig image_config)
   }
 
   // マンデルブロ集合を描写する
-  for (int _y = 0; _y < height; _y++)
+  for (int y = 0; y < height; y++)
   {
-    mpf_class y = mpf_class(_y, CALC_PRECISION);
-    png_bytep row = row_pointers[_y];
-    for (int _x = 0; _x < width; _x++)
+    png_bytep row = row_pointers[y];
+    for (int x = 0; x < width; x++)
     {
-      mpf_class x = mpf_class(x, CALC_PRECISION);
-      png_bytep px = &(row[_x * 4]);
+      png_bytep px = &(row[x * 4]);
 
       // マンデルブロ集合の計算を行う
       mpf_class x0 = x_min + (x_max - x_min) * x / width;
