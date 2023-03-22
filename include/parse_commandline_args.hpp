@@ -39,7 +39,6 @@ Options parse_commandline_args(int argc, char *argv[])
   opt.start_y = mpf_class(options["start-y"], CALC_PRECISION);
   opt.default_width = mpf_class(options["default-width"], CALC_PRECISION);
   opt.default_height = mpf_class(options["default-height"], CALC_PRECISION);
-  opt.length = std::stoi(options["length"]);
 
   return opt;
 }
