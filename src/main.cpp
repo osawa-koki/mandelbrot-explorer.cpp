@@ -6,6 +6,7 @@
 #include <gmp.h>
 #include <gmpxx.h>
 #include <sys/stat.h>
+#include <complex>
 
 #include "parse_commandline_args.hpp"
 #include "options.hpp"
@@ -39,13 +40,6 @@ int main(int argc, char *argv[])
     std::string filename = target_directory + zero_padding(i, 8) + ".png";
     std::cout << "FILENAME: " << filename << std::endl;
 
-    // let c_size_x = Float::with_val(RUG_PREC, height.clone()) * Float::with_val(RUG_PREC, aspect_ratio);
-    // let c_size_y = Float::with_val(RUG_PREC, height.clone());
-    // let new_start_x:Float = start_x.clone() + ((default_width - c_size_x.clone()) / 2.0);
-    // let new_start_y:Float = start_y.clone() - ((default_height - c_size_y.clone()) / 2.0);
-    // let upper_left = Complex::with_val(RUG_PREC, (new_start_x.clone(), new_start_y.clone()));
-    // let lower_right = Complex::with_val(RUG_PREC, (new_start_x.clone() + c_size_x.clone(), new_start_y.clone() - c_size_y.clone()));
-    
     mpf_class shrink = mpf_class(opt.shrink_ratio, CALC_PRECISION);
     for (int j = 0; j < i; j++) {
       shrink *= opt.shrink_ratio;
@@ -53,6 +47,21 @@ int main(int argc, char *argv[])
     mpf_class height = opt.default_height * shrink;
     std::cout << "shrink -> " << shrink << std::endl;
     std::cout << "height -> " << height << std::endl;
+
+    mpf_class c_size_x = height * opt.aspect_ratio;
+    mpf_class c_size_y = height;
+    std::cout << "c_size_x -> " << c_size_x << std::endl;
+    std::cout << "c_size_y -> " << c_size_y << std::endl;
+
+    mpf_class new_start_x = opt.start_x + ((opt.default_width - c_size_x) / 2.0);
+    mpf_class new_start_y = opt.start_y - ((opt.default_height - c_size_y) / 2.0);
+    std::cout << "new_start_x -> " << new_start_x << std::endl;
+    std::cout << "new_start_y -> " << new_start_y << std::endl;
+
+    std::complex<mpf_class> upper_left = std::complex<mpf_class>(new_start_x, new_start_y);
+    std::complex<mpf_class> lower_right = std::complex<mpf_class>(new_start_x + c_size_x, new_start_y - c_size_y);
+    std::cout << "upper_left -> " << upper_left << std::endl;
+    std::cout << "lower_right -> " << lower_right << std::endl;
   }
 
   return 0;
