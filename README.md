@@ -12,6 +12,16 @@ make
 make run ARGS="コマンドライン引数"
 ```
 
+---
+
+また、画像ファイルから動画を作成する場合は、以下のコマンドを実行してください。  
+
+```shell
+ffmpeg -r 30 -i ./work/★name★/%08d.png -vcodec libx264 -pix_fmt yuv420p -r 60 ./dist/video.mp4
+```
+
+---
+
 サンプルとして`./run.sh`を用意しています。  
 
 ### コマンドライン引数
