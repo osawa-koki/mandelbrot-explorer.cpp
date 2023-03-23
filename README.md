@@ -1,11 +1,12 @@
 # mandelbrot-explorer.cpp
 
 🌀🌀🌀 C++でマンデルブロ集合を描写してみた！  
+複数の画像を結合して動画を作成することもできます。  
 
 ## 実行方法
 
 DevContainerに入ってから、以下のコマンドを実行してください。  
-C++の開発環境とffmpegの実行環境が必要です。  
+C++の開発環境とffmpegの実行環境があれば、実行できます。  
 
 ```shell
 make
@@ -40,7 +41,7 @@ ffmpeg -r 30 -i ./work/★name★/%08d.png -vcodec libx264 -pix_fmt yuv420p -r 6
 | default-height | 虚数平面の高さ |
 
 - `from`と`upto`は、`from`から`upto`までの間で、`upto`を含む範囲で画像を生成します。
-- `from`には、`0`を指定してください。
+- 動画を作成する際には、`from`には`0`を指定してください。
 - `filesize-height`は、画像の高さを指定します。  
 - `filesize-height`の値が大きいと、画像の解像度が高くなりますが、処理に時間がかかります。
 - 画像の幅は、`aspect-ratio`と`filesize-height`から計算されます。
