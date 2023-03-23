@@ -36,5 +36,11 @@ ffmpeg -r 30 -i ./work/★name★/%08d.png -vcodec libx264 -pix_fmt yuv420p -r 6
 | filesize-height | 画像の高さ |
 | start-x | 画像の開始位置のX座標 |
 | start-y | 画像の開始位置のY座標 |
-| default-width | 画像の幅 |
-| default-height | 画像の高さ |
+| default-width | 虚数平面の幅 |
+| default-height | 虚数平面の高さ |
+
+- `from`と`upto`は、`from`から`upto`までの間で、`upto`を含む範囲で画像を生成します。
+- `from`には、`0`を指定してください。
+- `filesize-height`は、画像の高さを指定します。  
+- `filesize-height`の値が大きいと、画像の解像度が高くなりますが、処理に時間がかかります。
+- 画像の幅は、`aspect-ratio`と`filesize-height`から計算されます。
