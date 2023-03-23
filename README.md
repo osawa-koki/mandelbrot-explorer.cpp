@@ -47,3 +47,8 @@ ffmpeg -r 30 -i ./work/★name★/%08d.png -vcodec libx264 -pix_fmt yuv420p -r 6
 - `filesize-height`は、画像の高さを指定します。  
 - `filesize-height`の値が大きいと、画像の解像度が高くなりますが、処理に時間がかかります。
 - 画像の幅は、`aspect-ratio`と`filesize-height`から計算されます。
+
+## CI/CD
+
+GitHub Actionsを用いて、CI/CDを実現しています。  
+`main`ブランチにpushすると、ビルド・実行とデプロイが行われます。  
