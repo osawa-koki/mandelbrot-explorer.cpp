@@ -27,6 +27,9 @@ ffmpeg -r 30 -i ./work/★name★/%08d.png -vcodec libx264 -pix_fmt yuv420p -r 6
 
 サンプルとして`./run.sh`を用意しています。  
 
+Windowsユーザの場合は`dos2unix ./run.sh`を実行してください。  
+これは、`./run.sh`の改行コードを`LF`に変換するためです。  
+
 ### コマンドライン引数
 
 | キー | 説明 |
