@@ -47,7 +47,7 @@ Windowsユーザの場合は`dos2unix ./run.sh`を実行してください。
 
 - `from`と`upto`は、`from`から`upto`までの間で、`upto`を含む範囲で画像を生成します。
 - 動画を作成する際には、`from`には`0`を指定してください。
-- `filesize-height`は、画像の高さを指定します。  
+- `filesize-height`は、画像の高さを指定します。
 - 画像の幅は、`aspect-ratio`と`filesize-height`から計算されます。
 - `filesize-height`の値が大きいと、処理に時間がかかります。
 
